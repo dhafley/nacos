@@ -13,9 +13,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <parent>
         <groupId>com.alibaba.nacos</groupId>
@@ -33,100 +31,13 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>nacos-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>nacos-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
     
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-encryption-plugin</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpasyncclient</artifactId>
-        </dependency>
-        
-        <!-- Provided -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-influx</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-elastic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-contrl-plugin</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-datasource-plugin</artifactId>
-        </dependency>
-    </dependencies>
+ 
+    <versions.java-code-security-toolkit>0.0.2</versions.java-code-security-toolkit>
+ </properties>
+    
+    
     <build>
         <plugins>
             <plugin>
@@ -176,4 +87,107 @@
             </build>
         </profile>
     </profiles>
-</project>
+
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>io.github.pixee</groupId>
+          <artifactId>java-code-security-toolkit</artifactId>
+          <version>${versions.java-code-security-toolkit}</version>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+ 
+    <dependencies> 
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-web</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>${project.groupId}</groupId>  
+        <artifactId>nacos-api</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>${project.groupId}</groupId>  
+        <artifactId>nacos-core</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-jdbc</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>commons-io</groupId>  
+        <artifactId>commons-io</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>mysql</groupId>  
+        <artifactId>mysql-connector-java</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.apache.derby</groupId>  
+        <artifactId>derby</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>ch.qos.logback</groupId>  
+        <artifactId>logback-classic</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>com.alibaba.nacos</groupId>  
+        <artifactId>nacos-encryption-plugin</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.apache.httpcomponents</groupId>  
+        <artifactId>httpasyncclient</artifactId> 
+      </dependency>  
+      <!-- Provided -->  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-tomcat</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>com.fasterxml.jackson.core</groupId>  
+        <artifactId>jackson-core</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>com.fasterxml.jackson.core</groupId>  
+        <artifactId>jackson-databind</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>io.micrometer</groupId>  
+        <artifactId>micrometer-registry-prometheus</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>io.micrometer</groupId>  
+        <artifactId>micrometer-registry-influx</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>io.micrometer</groupId>  
+        <artifactId>micrometer-registry-elastic</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-aop</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-actuator</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.yaml</groupId>  
+        <artifactId>snakeyaml</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>com.alibaba.nacos</groupId>  
+        <artifactId>nacos-contrl-plugin</artifactId>  
+        <version>${revision}</version> 
+      </dependency>  
+      <dependency> 
+        <groupId>com.alibaba.nacos</groupId>  
+        <artifactId>nacos-datasource-plugin</artifactId> 
+      </dependency>  
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-code-security-toolkit</artifactId>
+      </dependency>
+    </dependencies>
+ </project>
