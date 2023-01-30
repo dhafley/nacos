@@ -13,11 +13,7 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>nacos-plugin</artifactId>
         <groupId>com.alibaba.nacos</groupId>
@@ -30,13 +26,34 @@
     <name>nacos-control-plugin ${project.version}</name>
     <url>http://nacos.io</url>
     
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-common</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-    </dependencies>
+    
 
-</project>
+
+<properties>
+
+
+<versions.java-code-security-toolkit>0.0.2</versions.java-code-security-toolkit>
+</properties>
+
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.pixee</groupId>
+      <artifactId>java-code-security-toolkit</artifactId>
+      <version>${versions.java-code-security-toolkit}</version>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+
+    <dependencies> 
+      <dependency> 
+        <groupId>com.alibaba.nacos</groupId>  
+        <artifactId>nacos-common</artifactId>  
+        <scope>provided</scope> 
+      </dependency>  
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-code-security-toolkit</artifactId>
+      </dependency>
+    </dependencies>
+ </project>
