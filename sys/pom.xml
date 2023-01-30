@@ -13,11 +13,7 @@
   ~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~   See the License for the specific language governing permissions and
   ~   limitations under the License.
-  -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.alibaba.nacos</groupId>
         <artifactId>nacos-all</artifactId>
@@ -33,49 +29,13 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
     
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>nacos-common</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
     
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+ 
+    <versions.java-code-security-toolkit>0.0.2</versions.java-code-security-toolkit>
+ </properties>
     
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
     
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-custom-environment-plugin</artifactId>
-        </dependency>
-    </dependencies>
     
     <build>
         <plugins>
@@ -89,4 +49,56 @@
             </plugin>
         </plugins>
     </build>
-</project>
+
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>io.github.pixee</groupId>
+          <artifactId>java-code-security-toolkit</artifactId>
+          <version>${versions.java-code-security-toolkit}</version>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+ 
+    <dependencies> 
+      <dependency> 
+        <groupId>${project.groupId}</groupId>  
+        <artifactId>nacos-common</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-test</artifactId>  
+        <scope>test</scope>  
+        <exclusions> 
+          <exclusion> 
+            <groupId>org.junit.vintage</groupId>  
+            <artifactId>junit-vintage-engine</artifactId> 
+          </exclusion> 
+        </exclusions> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-test</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-test</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>org.codehaus.jackson</groupId>  
+        <artifactId>jackson-core-asl</artifactId> 
+      </dependency>  
+      <dependency> 
+        <groupId>com.alibaba.nacos</groupId>  
+        <artifactId>nacos-custom-environment-plugin</artifactId> 
+      </dependency>  
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-code-security-toolkit</artifactId>
+      </dependency>
+    </dependencies>
+ </project>
