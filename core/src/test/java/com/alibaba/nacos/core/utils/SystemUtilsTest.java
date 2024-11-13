@@ -18,6 +18,7 @@ package com.alibaba.nacos.core.utils;
 
 import com.alibaba.nacos.sys.env.EnvUtil;
 import com.alibaba.nacos.sys.utils.ApplicationUtils;
+import java.security.SecureRandom;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -39,7 +40,7 @@ import static com.alibaba.nacos.sys.env.Constants.STANDALONE_MODE_PROPERTY_NAME;
  */
 public class SystemUtilsTest {
     
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
     
     private static boolean standaloneMode = RANDOM.nextBoolean();
     
