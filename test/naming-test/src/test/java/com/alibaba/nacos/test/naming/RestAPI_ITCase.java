@@ -19,6 +19,8 @@ import com.alibaba.nacos.Nacos;
 import com.alibaba.nacos.common.utils.JacksonUtils;
 import com.alibaba.nacos.test.base.Params;
 import com.fasterxml.jackson.databind.JsonNode;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -44,7 +46,7 @@ public class RestAPI_ITCase extends NamingBase {
     @Before
     public void setUp() throws Exception {
         String url = String.format("http://localhost:%d/", port);
-        this.base = new URL(url);
+        this.base = Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         //prepareData();
     }
 
