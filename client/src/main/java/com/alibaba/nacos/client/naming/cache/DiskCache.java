@@ -22,6 +22,7 @@ import com.alibaba.nacos.api.naming.pojo.ServiceInfo;
 import com.alibaba.nacos.client.naming.utils.CollectionUtils;
 import com.alibaba.nacos.common.utils.JacksonUtils;
 import com.alibaba.nacos.common.utils.StringUtils;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -120,7 +121,7 @@ public class DiskCache {
                         reader = new BufferedReader(new StringReader(dataString));
                         
                         String json;
-                        while ((json = reader.readLine()) != null) {
+                        while ((json = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                             try {
                                 if (!json.startsWith("{")) {
                                     continue;

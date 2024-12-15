@@ -27,6 +27,7 @@ import com.alibaba.nacos.common.lifecycle.Closeable;
 import com.alibaba.nacos.common.utils.JacksonUtils;
 import com.alibaba.nacos.common.utils.StringUtils;
 import com.alibaba.nacos.common.utils.ThreadUtils;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -216,7 +217,7 @@ public class FailoverReactor implements Closeable {
                         reader = new BufferedReader(new StringReader(dataString));
                         
                         String json;
-                        if ((json = reader.readLine()) != null) {
+                        if ((json = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                             try {
                                 dom = JacksonUtils.toObj(json, ServiceInfo.class);
                             } catch (Exception e) {
