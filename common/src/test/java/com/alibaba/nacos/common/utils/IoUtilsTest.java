@@ -16,6 +16,7 @@
 
 package com.alibaba.nacos.common.utils;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.commons.io.Charsets;
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,10 +37,10 @@ public class IoUtilsTest {
     public void testCloseQuietly() throws IOException {
         BufferedReader br = new BufferedReader(
                 new InputStreamReader(new ByteArrayInputStream("111".getBytes(Charsets.toCharset("UTF-8")))));
-        Assert.assertEquals("111", br.readLine());
+        Assert.assertEquals("111", BoundedLineReader.readLine(br, 5_000_000));
         IoUtils.closeQuietly(br);
         try {
-            br.readLine();
+            BoundedLineReader.readLine(br, 5_000_000);
         } catch (IOException e) {
             Assert.assertNotNull(e);
             return;
@@ -51,18 +52,18 @@ public class IoUtilsTest {
     public void testCloseQuietly2() throws IOException {
         BufferedReader br = new BufferedReader(
                 new InputStreamReader(new ByteArrayInputStream("123".getBytes(Charsets.toCharset("UTF-8")))));
-        Assert.assertEquals("123", br.readLine());
+        Assert.assertEquals("123", BoundedLineReader.readLine(br, 5_000_000));
         BufferedReader br2 = new BufferedReader(
                 new InputStreamReader(new ByteArrayInputStream("456".getBytes(Charsets.toCharset("UTF-8")))));
-        Assert.assertEquals("456", br2.readLine());
+        Assert.assertEquals("456", BoundedLineReader.readLine(br2, 5_000_000));
         IoUtils.closeQuietly(br, br2);
         try {
-            br.readLine();
+            BoundedLineReader.readLine(br, 5_000_000);
         } catch (IOException e) {
             Assert.assertNotNull(e);
         }
         try {
-            br2.readLine();
+            BoundedLineReader.readLine(br2, 5_000_000);
         } catch (IOException e) {
             Assert.assertNotNull(e);
             return;
