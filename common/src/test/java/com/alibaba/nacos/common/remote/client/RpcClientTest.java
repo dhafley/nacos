@@ -23,6 +23,7 @@ import com.alibaba.nacos.api.remote.response.ErrorResponse;
 import com.alibaba.nacos.common.remote.ConnectionType;
 import com.alibaba.nacos.common.remote.client.grpc.DefaultGrpcClientConfig;
 import com.alibaba.nacos.common.remote.client.grpc.GrpcConnection;
+import java.security.SecureRandom;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -502,7 +503,7 @@ public class RpcClientTest {
     
     @Test
     public void testHealthCheck() throws IllegalAccessException, NacosException {
-        Random random = new Random();
+        Random random = new SecureRandom();
         int retry = random.nextInt(10);
         when(rpcClientConfig.healthCheckRetryTimes()).thenReturn(retry);
         rpcClient.rpcClientStatus.set(RpcClientStatus.RUNNING);

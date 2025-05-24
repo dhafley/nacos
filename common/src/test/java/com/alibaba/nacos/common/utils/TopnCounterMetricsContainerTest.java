@@ -16,6 +16,7 @@
 
 package com.alibaba.nacos.common.utils;
 
+import java.security.SecureRandom;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -83,7 +84,7 @@ public class TopnCounterMetricsContainerTest {
             topnCounterMetricsContainer.put(dataIds.substring(i, i + 1));
             dataList.add(new Pair<>(dataIds.substring(i, i + 1), new AtomicInteger()));
         }
-        Random random = new Random();
+        Random random = new SecureRandom();
         for (int i = 0; i < 10000; i++) {
             int j = random.nextInt(dataIds.length());
             topnCounterMetricsContainer.increment(dataIds.substring(j, j + 1));

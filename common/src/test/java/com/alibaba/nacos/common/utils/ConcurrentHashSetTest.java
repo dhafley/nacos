@@ -16,6 +16,7 @@
 
 package com.alibaba.nacos.common.utils;
 
+import java.security.SecureRandom;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.ConcurrentModificationException;
@@ -178,7 +179,7 @@ public class ConcurrentHashSetTest {
     
         @Override
         protected void process() {
-            int random = new Random().nextInt(1000);
+            int random = new SecureRandom().nextInt(1000);
             hashSet.add(random);
         }
         
@@ -193,7 +194,7 @@ public class ConcurrentHashSetTest {
     
         @Override
         protected void process() {
-            int random = new Random().nextInt(1000);
+            int random = new SecureRandom().nextInt(1000);
             hashSet.remove(random);
         }
         
