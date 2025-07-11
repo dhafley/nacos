@@ -43,6 +43,7 @@ import com.alibaba.nacos.config.server.utils.Protocol;
 import com.alibaba.nacos.config.server.utils.RequestUtil;
 import com.alibaba.nacos.config.server.utils.TimeUtils;
 import com.alibaba.nacos.plugin.encryption.handler.EncryptionHandler;
+import io.github.pixee.security.Newlines;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -154,7 +155,7 @@ public class ConfigServletInner {
         }
         
         if (isV2) {
-            response.setHeader(HttpHeaderConsts.CONTENT_TYPE, MediaType.APPLICATION_JSON);
+            response.setHeader(HttpHeaderConsts.CONTENT_TYPE, Newlines.stripAll(MediaType.APPLICATION_JSON));
         }
         
         final String groupKey = GroupKey2.getKey(dataId, group, tenant);
@@ -179,13 +180,13 @@ public class ConfigServletInner {
                 
                 final String configType =
                         (null != cacheItem.getType()) ? cacheItem.getType() : FileTypeEnum.TEXT.getFileType();
-                response.setHeader("Config-Type", configType);
+                response.setHeader("Config-Type", Newlines.stripAll(configType));
                 FileTypeEnum fileTypeEnum = FileTypeEnum.getFileTypeEnumByFileExtensionOrFileType(configType);
                 String contentTypeHeader = fileTypeEnum.getContentType();
-                response.setHeader(HttpHeaderConsts.CONTENT_TYPE, contentTypeHeader);
+                response.setHeader(HttpHeaderConsts.CONTENT_TYPE, Newlines.stripAll(contentTypeHeader));
                 
                 if (isV2) {
-                    response.setHeader(HttpHeaderConsts.CONTENT_TYPE, MediaType.APPLICATION_JSON);
+                    response.setHeader(HttpHeaderConsts.CONTENT_TYPE, Newlines.stripAll(MediaType.APPLICATION_JSON));
                 }
                 
                 File file = null;
@@ -216,7 +217,7 @@ public class ConfigServletInner {
                             }
                             
                             response.setHeader(com.alibaba.nacos.api.common.Constants.VIPSERVER_TAG,
-                                    URLEncoder.encode(autoTag, StandardCharsets.UTF_8.displayName()));
+                                    Newlines.stripAll(URLEncoder.encode(autoTag, StandardCharsets.UTF_8.displayName())));
                         } else {
                             md5 = cacheItem.getMd5();
                             lastModified = cacheItem.getLastModifiedTs();
@@ -269,7 +270,7 @@ public class ConfigServletInner {
                     }
                 }
                 
-                response.setHeader(Constants.CONTENT_MD5, md5);
+                response.setHeader(Constants.CONTENT_MD5, Newlines.stripAll(md5));
                 
                 // Disable cache.
                 response.setHeader("Pragma", "no-cache");
